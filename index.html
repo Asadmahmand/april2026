@@ -1,1 +1,474 @@
-This is a test page. 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Learning - Master Modern Software Deployment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .cta-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        /* Cards Grid */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #667eea;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: #f8f9fa;
+        }
+
+        .benefit-item {
+            display: flex;
+            margin-bottom: 2rem;
+            gap: 2rem;
+        }
+
+        .benefit-number {
+            background: #667eea;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .benefit-content p {
+            color: #666;
+        }
+
+        /* Tools Section */
+        .tools {
+            background: white;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .tool-item:hover {
+            transform: scale(1.05);
+        }
+
+        .tool-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .benefit-item {
+                flex-direction: column;
+            }
+
+            .benefit-number {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🚀 DevOps Hub</div>
+            <ul>
+                <li><a href="#concepts">Concepts</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Master DevOps</h1>
+            <p>Learn the practices, tools, and mindset to automate software delivery and improve collaboration</p>
+            <button class="cta-btn">Start Learning Today</button>
+        </div>
+    </section>
+
+    <!-- Concepts Section -->
+    <section id="concepts" class="container">
+        <h2>Key DevOps Concepts</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🔄</div>
+                <h3>CI/CD Pipeline</h3>
+                <p>Continuous Integration and Continuous Deployment automate testing and deployment processes, ensuring code quality and faster releases.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🐳</div>
+                <h3>Containerization</h3>
+                <p>Use Docker and containers to package applications with dependencies, ensuring consistency across development and production environments.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h3>Infrastructure as Code</h3>
+                <p>Manage infrastructure through code using tools like Terraform and Ansible, enabling version control and reproducible environments.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Monitoring & Logging</h3>
+                <p>Real-time visibility into applications and infrastructure through monitoring tools, enabling quick problem detection and resolution.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔐</div>
+                <h3>Security & Compliance</h3>
+                <p>Integrate security practices throughout the DevOps pipeline with continuous scanning, vulnerability management, and policy enforcement.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Collaboration Culture</h3>
+                <p>Break down silos between development and operations teams, fostering shared responsibility and continuous improvement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits container">
+        <h2>Why DevOps Matters</h2>
+        <div>
+            <div class="benefit-item">
+                <div class="benefit-number">1</div>
+                <div class="benefit-content">
+                    <h4>Faster Deployment</h4>
+                    <p>Automate repetitive tasks and streamline workflows to deploy code changes faster and more frequently with confidence.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-number">2</div>
+                <div class="benefit-content">
+                    <h4>Improved Quality</h4>
+                    <p>Continuous testing and integration catch bugs early, reducing defects and improving overall software quality.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-number">3</div>
+                <div class="benefit-content">
+                    <h4>Better Collaboration</h4>
+                    <p>Bridge the gap between development and operations teams, improving communication and shared responsibility.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-number">4</div>
+                <div class="benefit-content">
+                    <h4>Reduced Costs</h4>
+                    <p>Automation reduces manual errors and operational overhead, leading to significant cost savings over time.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-number">5</div>
+                <div class="benefit-content">
+                    <h4>Reliability & Stability</h4>
+                    <p>Monitoring, logging, and automated rollbacks ensure systems remain stable and recoverable from failures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="tools container">
+        <h2>Essential DevOps Tools</h2>
+        <div class="tool-grid">
+            <div class="tool-item">
+                <h4>Git</h4>
+                <p>Version control system for tracking code changes and collaboration</p>
+            </div>
+            <div class="tool-item">
+                <h4>Jenkins</h4>
+                <p>Open-source automation server for CI/CD pipelines</p>
+            </div>
+            <div class="tool-item">
+                <h4>Docker</h4>
+                <p>Containerization platform for consistent deployments</p>
+            </div>
+            <div class="tool-item">
+                <h4>Kubernetes</h4>
+                <p>Container orchestration for managing deployments at scale</p>
+            </div>
+            <div class="tool-item">
+                <h4>Terraform</h4>
+                <p>Infrastructure as Code tool for cloud resource management</p>
+            </div>
+            <div class="tool-item">
+                <h4>Prometheus</h4>
+                <p>Monitoring and alerting system for observability</p>
+            </div>
+            <div class="tool-item">
+                <h4>ELK Stack</h4>
+                <p>Elasticsearch, Logstash, Kibana for logging and analysis</p>
+            </div>
+            <div class="tool-item">
+                <h4>Ansible</h4>
+                <p>Automation tool for configuration management and deployment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>DevOps Learning Hub</h3>
+            <div class="footer-links">
+                <a href="#concepts">Concepts</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#tools">Tools</a>
+                <a href="mailto:hello@devops.com">Email Us</a>
+            </div>
+            <p>&copy; 2026 DevOps Learning Platform. All rights reserved. | Made with ❤️ for continuous improvement</p>
+        </div>
+    </footer>
+</body>
+</html>
